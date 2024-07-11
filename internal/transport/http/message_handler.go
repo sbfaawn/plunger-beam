@@ -4,14 +4,21 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func (h *Handler) SendMessages(ctx *gin.Context) {
+type messageHandler struct {
+}
+
+func NewMessageHandler() *messageHandler {
+	return &messageHandler{}
+}
+
+func (h *messageHandler) SendMessages(ctx *gin.Context) {
 
 }
 
-func (h *Handler) GetConversation(ctx *gin.Context) {
+func (h *messageHandler) GetConversation(ctx *gin.Context) {
 
 }
 
-func (h *Handler) DeleteMessage(ctx *gin.Context) {
+func (h *messageHandler) DeleteMessage(ctx *gin.Context) {
 
 }
