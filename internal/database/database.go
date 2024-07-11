@@ -4,8 +4,7 @@ import (
 	"fmt"
 	"log"
 	"os"
-	"plunger-beam/pkg/account"
-	"plunger-beam/pkg/message"
+	"plunger-beam/internal/models"
 	"time"
 
 	"gorm.io/driver/mysql"
@@ -85,7 +84,7 @@ func (conn *mySqlConnection) PopulateData() {
 
 func (conn *mySqlConnection) MigrateData() {
 	if conn.isMigrate {
-		err := conn.db.AutoMigrate(account.Account{}, message.Message{})
+		err := conn.db.AutoMigrate(models.Account{}, models.Message{})
 		fmt.Println("Error DB Migration : ", err)
 		fmt.Println("Table Migration is done")
 	}
