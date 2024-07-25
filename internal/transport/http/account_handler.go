@@ -4,29 +4,29 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-type accountHandler struct {
+type AccountHandler struct {
 }
 
-func NewAccountHandler() *accountHandler {
-	return &accountHandler{}
+func NewAccountHandler() *AccountHandler {
+	return &AccountHandler{}
 }
 
-func (h *accountHandler) RegistrationHandler(ctx *gin.Context) {
-
-}
-
-func (h *accountHandler) LoginHandler(ctx *gin.Context) {
+func (h *AccountHandler) RegistrationHandler(ctx *gin.Context) {
 
 }
 
-func (h *accountHandler) LogoutHandler(ctx *gin.Context) {
+func (h *AccountHandler) LoginHandler(ctx *gin.Context) {
 
 }
 
-func (h *accountHandler) RefreshTokenHandler(ctx *gin.Context) {
+func (h *AccountHandler) LogoutHandler(ctx *gin.Context) {
 
 }
 
-func (h *accountHandler) CheckSession(ctx *gin.Context) {
+func (h *AccountHandler) RefreshTokenHandler(ctx *gin.Context) {
+
+}
+
+func (h *AccountHandler) CheckSession(ctx *gin.Context) {
 
 }

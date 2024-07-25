@@ -3,7 +3,7 @@ package auth
 import (
 	"errors"
 	"net/http"
-	"plunger-beam/api/rest/dto"
+	"plunger-beam/internal/dto"
 	"time"
 
 	"github.com/gin-gonic/gin"

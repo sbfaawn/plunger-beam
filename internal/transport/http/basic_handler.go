@@ -1,19 +1,19 @@
 package http
 
 import (
-	"plunger-beam/api/rest/dto"
+	"plunger-beam/internal/dto"
 
 	"github.com/gin-gonic/gin"
 )
 
-type basicHandler struct {
+type BasicHandler struct {
 }
 
-func NewBasicHandler() *basicHandler {
-	return &basicHandler{}
+func NewBasicHandler() *BasicHandler {
+	return &BasicHandler{}
 }
 
-func (h *basicHandler) NoRouteHandler(ctx *gin.Context) {
+func (h *BasicHandler) NoRouteHandler(ctx *gin.Context) {
 	ctx.JSON(404, dto.Response{
 		Message: "",
 		Data:    "",
@@ -21,7 +21,7 @@ func (h *basicHandler) NoRouteHandler(ctx *gin.Context) {
 	})
 }
 
-func (h *basicHandler) NoMethodAllowed(ctx *gin.Context) {
+func (h *BasicHandler) NoMethodAllowed(ctx *gin.Context) {
 	ctx.JSON(400, dto.Response{
 		Message: "",
 		Data:    "",
@@ -29,7 +29,7 @@ func (h *basicHandler) NoMethodAllowed(ctx *gin.Context) {
 	})
 }
 
-func (h *basicHandler) HealthCheck(ctx *gin.Context) {
+func (h *BasicHandler) HealthCheck(ctx *gin.Context) {
 	ctx.JSON(200, dto.Response{
 		Message: "",
 		Data:    "",
