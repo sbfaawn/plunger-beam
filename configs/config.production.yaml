@@ -1,0 +1,17 @@
+server:
+  port: 8080
+database:
+  driver: mysql
+  address: localhost
+  username: root
+  password: root
+  port: 3307
+  database: chat-database
+  isPopulated: false
+  isMigrate: true
+cache:
+  drive: redis
+  address: localhost
+	port: 6379
+	dbNum: 0
+	password: pass123

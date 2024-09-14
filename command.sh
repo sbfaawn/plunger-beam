@@ -1,0 +1,1 @@
+docker-compose -f .\configs\docker-compose.yaml -p plunger-beam start -d
