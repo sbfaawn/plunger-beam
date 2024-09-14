@@ -27,12 +27,14 @@ type Config struct {
 		Drive    string `yaml:"drive"`
 		Address  string `yaml:"address"`
 		Port     string `yaml:"port"`
-		DbNum    string `yaml:"dbNum"`
+		DbNum    int    `yaml:"dbNum"`
 		Password string `yaml:"password"`
 	} `yaml:"cache"`
 }
 
-func Read() *Config {
+var cfg *Config
+
+func Read() {
 	env := flag.String("env", "development", "Environment (development|production)")
 	flag.Parse()
 
@@ -43,11 +45,13 @@ func Read() *Config {
 	}
 	defer file.Close()
 
-	var cfg Config
 	decoder := yaml.NewDecoder(file)
-	if err := decoder.Decode(&cfg); err != nil {
+	if err := decoder.Decode(cfg); err != nil {
 		log.Fatalf("Failed to decode config file: %v", err)
 	}
 
-	return &cfg
+}
+
+func GetConfig() *Config {
+	return cfg
 }

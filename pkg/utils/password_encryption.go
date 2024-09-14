@@ -6,16 +6,20 @@ import (
 	"golang.org/x/crypto/bcrypt"
 )
 
-type PasswordEncryptor struct {
-	Password string
+type PasswordEncryptor interface {
+	Encrypt(password string) (string, error)
+	IsHashedPasswordMatch(hashedPassword string, password string) bool
 }
 
-func NewPasswordEncryptor() *PasswordEncryptor {
-	return &PasswordEncryptor{}
+type passwordEncryptorImpl struct {
 }
 
-func (encryptor *PasswordEncryptor) Encrypt() (string, error) {
-	var passwordBytes = []byte(encryptor.Password)
+func NewPasswordEncryptor() PasswordEncryptor {
+	return &passwordEncryptorImpl{}
+}
+
+func (encryptor *passwordEncryptorImpl) Encrypt(password string) (string, error) {
+	var passwordBytes = []byte(password)
 
 	hashedPasswordBytes, err := bcrypt.GenerateFromPassword(passwordBytes, bcrypt.MinCost)
 
@@ -26,9 +30,9 @@ func (encryptor *PasswordEncryptor) Encrypt() (string, error) {
 	return string(hashedPasswordBytes), nil
 }
 
-func (encryptor *PasswordEncryptor) IsHashedPasswordMatch(hashedPassword string) bool {
+func (encryptor *passwordEncryptorImpl) IsHashedPasswordMatch(hashedPassword string, password string) bool {
 	byteHash := []byte(hashedPassword)
-	byteOriginal := []byte(encryptor.Password)
+	byteOriginal := []byte(password)
 
 	err := bcrypt.CompareHashAndPassword(byteHash, byteOriginal)
 	if err != nil {

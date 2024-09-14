@@ -1,7 +1,7 @@
 package http
 
 import (
-	"plunger-beam/internal/dto"
+	"plunger-beam/api/rest/dto"
 
 	"github.com/gin-gonic/gin"
 )
